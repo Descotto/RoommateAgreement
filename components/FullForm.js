@@ -33,7 +33,8 @@ export default function FullForm({ formData, prorated, proratedData }) {
 
 
   return (
-    <div className="p-6 max-w-2xl mx-auto" ref={formRef}>
+    <div ref={formRef} className="p-6 max-w-2xl mx-auto">
+
       <h1 className="text-2xl font-bold">ROOMMATE AGREEMENT</h1>
       <ul className="mt-4 space-y-3">
         <li>
