@@ -9,12 +9,9 @@ export default function FullForm({ formData, prorated, proratedData }) {
 
   const handleDownloadPDF = () => {
     if (!formRef.current) {
-      console.error("No valid element found for PDF generation.");
+      console.error("Form reference is null.");
       return;
     }
-  
-    // Temporarily force black text before capturing
-    formRef.current.style.color = "black";
   
     html2canvas(formRef.current, { scale: 2 })
       .then((canvas) => {
@@ -25,12 +22,12 @@ export default function FullForm({ formData, prorated, proratedData }) {
   
         pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
         pdf.save("Roommate_Agreement.pdf");
-  
-        // Restore original styles after PDF generation
-        formRef.current.style.color = "";
       })
-      .catch((error) => console.error("Error generating PDF:", error));
+      .catch((error) => {
+        console.error("Error generating PDF:", error);
+      });
   };
+  
   
   
 
