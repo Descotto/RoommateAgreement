@@ -44,7 +44,7 @@ export default function RoommateAgreement() {
 
   return (
     <div className="p-6 max-w-2xl mx-auto">
-      <h1 className="text-2xl font-bold">Roommate Agreement Form</h1>
+      {/* <h1 className="text-2xl font-bold">Roommate Agreement Form</h1> */}
 
       {submitted ? (
         // Display the FullForm component with the form data passed as props
@@ -52,54 +52,62 @@ export default function RoommateAgreement() {
       ) : (
         // Display the form if not yet submitted
         <form onSubmit={handleSubmit} className="mt-4 space-y-3">
-          <input 
-            name="roommateName" 
-            placeholder="Roommate Name" 
-            onChange={handleChange} 
+          <input
+            name="roommateName"
+            placeholder="Roommate Name"
+            onChange={handleChange}
             className="border p-2 w-full"
             value={formData.roommateName}
           />
-          <input 
-            name="landlordName" 
-            placeholder="Landlord Name" 
-            onChange={handleChange} 
+          <input
+            name="landlordName"
+            placeholder="Landlord Name"
+            onChange={handleChange}
             className="border p-2 w-full"
             value={formData.landlordName}
           />
-          <input 
-            name="address" 
-            placeholder="Property Address" 
-            onChange={handleChange} 
+          <input
+            name="address"
+            placeholder="Property Address"
+            onChange={handleChange}
             className="border p-2 w-full"
             value={formData.address}
           />
-          <input 
-            type="date" 
-            name="startDate" 
-            onChange={handleChange} 
-            className="border p-2 w-full"
-            value={formData.startDate}
-          />
-          <input 
-            type="date" 
-            name="endDate" 
-            onChange={handleChange} 
-            className="border p-2 w-full"
-            value={formData.endDate}
-          />
-          <input 
-            name="rent" 
-            type="number" 
-            placeholder="Monthly Rent ($)" 
-            onChange={handleChange} 
+          <label className="block">
+            <span className="text-sm font-medium">Start Date</span>
+            <input
+              type="date"
+              name="startDate"
+              onChange={handleChange}
+              className="border p-2 w-full mt-1"
+              value={formData.startDate}
+            />
+          </label>
+
+          <label className="block">
+            <span className="text-sm font-medium">End Date</span>
+            <input
+              type="date"
+              name="endDate"
+              onChange={handleChange}
+              className="border p-2 w-full mt-1"
+              value={formData.endDate}
+            />
+          </label>
+
+          <input
+            name="rent"
+            type="number"
+            placeholder="Monthly Rent ($)"
+            onChange={handleChange}
             className="border p-2 w-full"
             value={formData.rent}
           />
-          <input 
-            name="deposit" 
-            type="number" 
-            placeholder="Security Deposit ($)" 
-            onChange={handleChange} 
+          <input
+            name="deposit"
+            type="number"
+            placeholder="Security Deposit ($)"
+            onChange={handleChange}
             className="border p-2 w-full"
             value={formData.deposit}
           />
@@ -107,10 +115,10 @@ export default function RoommateAgreement() {
           {/* Prorated Rent Section */}
           <div>
             <label>
-              <input 
-                type="checkbox" 
-                checked={prorated} 
-                onChange={handleProratedChange} 
+              <input
+                type="checkbox"
+                checked={prorated}
+                onChange={handleProratedChange}
               />
               Add prorated rent for certain months
             </label>
@@ -118,18 +126,18 @@ export default function RoommateAgreement() {
 
           {prorated && (
             <div className="mt-3 space-y-2">
-              <input 
-                name="month" 
-                placeholder="Month (e.g., June)" 
-                onChange={handleProratedDataChange} 
+              <input
+                name="month"
+                placeholder="Month (e.g., June)"
+                onChange={handleProratedDataChange}
                 className="border p-2 w-full"
                 value={proratedData.month}
               />
-              <input 
-                name="amount" 
-                type="number" 
-                placeholder="Prorated Amount ($)" 
-                onChange={handleProratedDataChange} 
+              <input
+                name="amount"
+                type="number"
+                placeholder="Prorated Amount ($)"
+                onChange={handleProratedDataChange}
                 className="border p-2 w-full"
                 value={proratedData.amount}
               />
