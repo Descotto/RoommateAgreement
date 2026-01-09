@@ -11,6 +11,8 @@ export default function FullForm({ formData, prorated, proratedData }) {
   const handlePrint = () => {
     if (!formRef.current) return;
 
+    document.title = `${formData.roommateName}-Roommate-Agreement-${formData.startDate}`;
+
     const buttons = formRef.current.querySelectorAll("button");
     buttons.forEach((button) => (button.style.display = "none"));
 
@@ -21,67 +23,6 @@ export default function FullForm({ formData, prorated, proratedData }) {
 
 
 
-  // const handleDownloadPDF = () => {
-  //   if (!formRef.current) return;
-
-  //   const buttons = formRef.current.querySelectorAll("button");
-  //   buttons.forEach((button) => (button.style.display = "none"));
-
-  //   const originalStyles = [];
-  //   const elements = formRef.current.querySelectorAll("*");
-
-  //   elements.forEach((element) => {
-  //     originalStyles.push({
-  //       element,
-  //       color: element.style.color,
-  //       backgroundColor: element.style.backgroundColor,
-  //       border: element.style.border,
-  //     });
-
-  //     element.style.color = "black";
-  //     element.style.backgroundColor = "transparent";
-  //     element.style.border = "none";
-  //   });
-
-  //   const contentWidth = formRef.current.scrollWidth;
-  //   const contentHeight = formRef.current.scrollHeight;
-
-  //   html2canvas(formRef.current, {
-  //     scale: 1.4,
-  //     backgroundColor: "transparent",
-  //     width: contentWidth,
-  //     height: contentHeight,
-  //   })
-  //     .then((canvas) => {
-  //       const imgData = canvas.toDataURL("image/png");
-  //       const pdf = new jsPDF("p", "mm", "a4");
-
-  //       const pdfWidth = 210;
-  //       const pdfHeight = 297;
-  //       const imgHeight = (canvas.height * pdfWidth) / canvas.width;
-
-  //       let yOffset = 0;
-  //       while (yOffset < imgHeight) {
-  //         if (yOffset > 0) pdf.addPage();
-  //         pdf.addImage(imgData, "PNG", 0, -yOffset, pdfWidth, imgHeight);
-  //         yOffset += pdfHeight - 20;
-  //       }
-
-  //       pdf.save("Roommate_Agreement.pdf");
-
-  //       originalStyles.forEach(({ element, color, backgroundColor, border }) => {
-  //         element.style.color = color;
-  //         element.style.backgroundColor = backgroundColor;
-  //         element.style.border = border;
-  //       });
-
-  //       buttons.forEach((button) => (button.style.display = ""));
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error generating PDF:", error);
-  //       buttons.forEach((button) => (button.style.display = ""));
-  //     });
-  // };
 
   return (
     <div
@@ -114,7 +55,7 @@ export default function FullForm({ formData, prorated, proratedData }) {
         <li>
           The Roommate will pay a total monthly rent of{" "}
           <strong>${formData.rent}</strong> in full to{" "}
-          <strong>{formData.landlordName}</strong> on or before the first day of each month. 
+          <strong>{formData.landlordName}</strong> on or before the first day of each month.
           Utilities and Wi‑Fi are included in this amount.
           {prorated && proratedData.month && proratedData.amount && (
             <div>
@@ -127,25 +68,25 @@ export default function FullForm({ formData, prorated, proratedData }) {
         <li>
           The security deposit is <strong>${formData.deposit}</strong>. The Roommate has
           paid <strong>${formData.deposit}</strong> to{" "}
-          <strong>{formData.landlordName}</strong> as a security deposit. 
-          Deductions permitted by California law, including any damages or unpaid rent, 
-          may be made from the security deposit, and the remainder, if any, 
-          shall be returned to the Roommate within 21 days of the termination of the tenancy. 
+          <strong>{formData.landlordName}</strong> as a security deposit.
+          Deductions permitted by California law, including any damages or unpaid rent,
+          may be made from the security deposit, and the remainder, if any,
+          shall be returned to the Roommate within 21 days of the termination of the tenancy.
           The security deposit may not be used as the last month’s rent.
         </li>
 
         <li>
-          <strong>Termination of Agreement:</strong> Either party may terminate this Agreement at any time and without cause, 
-          provided that <strong>30 days’ written notice</strong> is given to the other party. 
-          The Roommate is advised to contact the San Francisco Rent Board for any questions 
+          <strong>Termination of Agreement:</strong> Either party may terminate this Agreement at any time and without cause,
+          provided that <strong>30 days’ written notice</strong> is given to the other party.
+          The Roommate is advised to contact the San Francisco Rent Board for any questions
           regarding this Agreement, including the termination of the Agreement without cause.
         </li>
 
         <li>
           <strong>Overnight Guests:</strong> The Roommate must obtain the permission from <strong>{formData.landlordName}</strong> ("Landlord") prior to the stay
-          of any overnight guests. Guests may not stay more than <strong>four (4) nights total per 30-day period</strong> (an exception may be made for immediate family members). 
-          Guests may not be in the unit unless the Roommate is present 
-          (an exception may be made for immediate family members). 
+          of any overnight guests. Guests may not stay more than <strong>four (4) nights total per 30-day period</strong> (an exception may be made for immediate family members).
+          Guests may not be in the unit unless the Roommate is present
+          (an exception may be made for immediate family members).
           Guests are not permitted to use the kitchen or laundry facilities.
         </li>
 
@@ -159,29 +100,29 @@ export default function FullForm({ formData, prorated, proratedData }) {
         </li>
 
         <li>
-          <strong>House rules:</strong> The Roommate agrees to clean and maintain their room as well as the common areas. 
-          This includes dusting, vacuuming, emptying trash, and performing any other necessary household maintenance. 
-          All Roommates agree to act responsibly in their dealings with each other and to refrain from any behavior, action, 
-          or inaction that they know, or reasonably should know, will interfere with other Roommates’ quiet enjoyment. 
-          All Roommates agree to respect each other’s property, privacy, and sleep schedules and to comply with any reasonable 
-          request whenever possible. Quiet hours are from <strong>10:00 PM to 7:00 AM</strong>. 
-          The Roommate agrees to conserve water and electricity, and to properly separate recyclables, 
-          compostables, and landfill waste. 
-          Any surcharges or penalties incurred due to improper recycling or excessive 
+          <strong>House rules:</strong> The Roommate agrees to clean and maintain their room as well as the common areas.
+          This includes dusting, vacuuming, emptying trash, and performing any other necessary household maintenance.
+          All Roommates agree to act responsibly in their dealings with each other and to refrain from any behavior, action,
+          or inaction that they know, or reasonably should know, will interfere with other Roommates’ quiet enjoyment.
+          All Roommates agree to respect each other’s property, privacy, and sleep schedules and to comply with any reasonable
+          request whenever possible. Quiet hours are from <strong>10:00 PM to 7:00 AM</strong>.
+          The Roommate agrees to conserve water and electricity, and to properly separate recyclables,
+          compostables, and landfill waste.
+          Any surcharges or penalties incurred due to improper recycling or excessive
           utility usage by the Roommate will be the Roommate’s responsibility.
         </li>
 
         <li>
-          Smoking is not permitted in or around the house. 
-          IF THERE IS ANY EVIDENCE OF SMOKING ON THE LEASED PREMISES AT ANY TIME DURING THE LEASE, 
+          Smoking is not permitted in or around the house.
+          IF THERE IS ANY EVIDENCE OF SMOKING ON THE LEASED PREMISES AT ANY TIME DURING THE LEASE,
           THE ENTIRE SECURITY DEPOSIT WILL BE FORFEITED.
         </li>
 
         <li>
-          The Premises are in good condition. 
-          Upon termination of this Agreement for any cause, 
-          the Roommate shall leave the Premises in their original condition, 
-          except for reasonable wear and tear. The Roommate is responsible for 
+          The Premises are in good condition.
+          Upon termination of this Agreement for any cause,
+          the Roommate shall leave the Premises in their original condition,
+          except for reasonable wear and tear. The Roommate is responsible for
           repairing any damage resulting from their own actions or the actions of their guests.
         </li>
 
@@ -190,9 +131,9 @@ export default function FullForm({ formData, prorated, proratedData }) {
         </li>
 
         <li>
-          Complete and Binding Agreement. 
-          All preliminary negotiations between the Parties are merged into and superseded by the terms of this Agreement. 
-          This Agreement will not be enforceable until signed by both Parties. 
+          Complete and Binding Agreement.
+          All preliminary negotiations between the Parties are merged into and superseded by the terms of this Agreement.
+          This Agreement will not be enforceable until signed by both Parties.
           Any modifications to this Agreement must be in writing and signed by both Parties.
         </li>
       </ul>
